@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Afacad+Flux:wght@400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* [1. DESIGN SYSTEM] 파스텔톤 프리미엄 UI */
+        /* [DESIGN SYSTEM] 파스텔 에듀 둥근 모서리 UI 테마 */
         :root {
             --primary: #4caf50;
             --secondary: #dcfd8b;
             --accent: #ff823a;
             --purple: #bc84ee;
             --blue: #2196f3;
-            --bg-color: #f8fafc;
+            --bg-color: #f0f4f8;
             --card-bg: #ffffff;
             --text-color: #2d3436;
         }
@@ -25,8 +25,8 @@
         body {
             font-family: 'Afacad Flux', 'Malgun Gothic', sans-serif;
             background-color: var(--bg-color);
-            background-image: radial-gradient(circle at 5% 5%, #dcfd8b55 0%, transparent 25%),
-                              radial-gradient(circle at 95% 95%, #bc84ee33 0%, transparent 25%);
+            background-image: radial-gradient(circle at 5% 5%, #dcfd8b44 0%, transparent 25%),
+                              radial-gradient(circle at 95% 95%, #bc84ee22 0%, transparent 25%);
             background-attachment: fixed;
             margin: 0; padding: 20px;
             display: flex; justify-content: center;
@@ -35,7 +35,7 @@
         .main-app {
             width: 100%; max-width: 800px;
             background: var(--card-bg);
-            border-radius: 40px; padding: 45px;
+            border-radius: 40px; padding: 40px;
             box-shadow: 0 20px 60px rgba(0, 51, 102, 0.05);
             border: 1px solid rgba(255,255,255,0.8);
         }
@@ -55,7 +55,7 @@
 
         .card-box { background: #f8fafc; border-radius: 30px; padding: 30px; border: 1px solid #e2e8f0; line-height: 1.6; }
 
-        /* 2단계: 주제 선택 레이아웃 */
+        /* 라디오 버튼 주제 선택 */
         .radio-container { display: flex; flex-direction: column; gap: 12px; }
         .radio-label {
             background: #fff; padding: 18px 25px; border-radius: 25px; border: 2px solid #e2e8f0;
@@ -65,13 +65,13 @@
         .radio-label.active { border-color: var(--primary); background-color: #f0fff4; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(76, 175, 80, 0.15); }
         input[type="radio"] { width: 20px; height: 20px; accent-color: var(--primary); margin: 0; }
 
-        /* 3단계: 변인 확인 그리드 */
+        /* 변인 확인 그리드 */
         .v-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
         .v-card { background: white; padding: 22px 10px; border-radius: 25px; text-align: center; border: 1px solid #e2e8f0; }
         .v-card strong { display: block; font-size: 0.8rem; margin-bottom: 8px; color: #a0aec0; letter-spacing: 1px; }
         .v-card span { color: var(--text-color); font-weight: 700; font-size: 0.95rem; line-height: 1.3; }
 
-        /* 4단계: 실험 조작 */
+        /* 슬라이더 컨트롤 조작 */
         .slider-row { margin-bottom: 25px; }
         .slider-row label { display: block; margin-bottom: 12px; font-weight: 600; font-size: 1rem; }
         .slider-row label b { color: var(--primary); font-size: 1.2rem; }
@@ -85,22 +85,301 @@
             border: none; border-radius: 25px; padding: 20px; font-weight: 700; font-size: 1.1rem;
             cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; color: white;
         }
-        .btn-record { background-color: var(--primary); }
+        .btn-record { background-color: var(--primary); width: 100%; }
         .btn-graph { background-color: var(--purple); margin-top: 15px; width: 100%; }
         .btn-grade { background-color: var(--blue); margin-top: 25px; width: 100%; }
         .btn-retry { background-color: #636e72; margin-top: 15px; width: 100%; }
         .btn:hover { transform: translateY(-4px); filter: brightness(1.1); }
-        .btn:active { transform: translateY(0); }
 
         .warning-text { background: #fff5f5; color: #e53e3e; padding: 15px; border-radius: 20px; font-weight: 700; display: none; margin-bottom: 10px; border: 1.5px solid #fed7d7; }
 
-        /* 결과 시각화 */
+        /* 테이블 스크롤 및 보드 */
         .table-area { overflow-x: auto; margin-top: 20px; border-radius: 25px; border: 1px solid #e2e8f0; }
         table { width: 100%; border-collapse: collapse; background: white; }
         th { background: #f8fafc; padding: 18px; font-size: 0.95rem; color: #4a5568; }
         td { padding: 18px; border-top: 1px solid #f1f5f9; text-align: center; font-weight: 600; }
 
-        /* 퀴즈 */
+        /* 드롭다운 문장 퀴즈 */
         .quiz-zone { background: #fafbfc; border: 3px dashed #cbd5e1; padding: 40px; border-radius: 35px; }
         .quiz-sentence { line-height: 2.8; font-size: 1.15rem; font-weight: 500; }
-        select { padding: 10px 20px; border
+        select { padding: 10px 20px; border-radius: 15px; border: 2.5px solid var(--blue); font-weight: 700; color: var(--blue); background: white; cursor: pointer; }
+
+        .feedback-msg { margin-top: 30px; padding: 30px; border-radius: 30px; display: none; font-weight: 600; text-align: center; }
+        .feedback-msg.success { background: #f0fff4; border: 2px solid #c6f6d5; color: #22543d; }
+        .feedback-msg.error { background: #fff5f5; border: 2px solid #fed7d7; color: #822727; }
+    </style>
+</head>
+<body>
+
+<div class="main-app">
+    <header>
+        <div class="step-pill">Virtual Science Lab</div>
+        <h1>🌿 광합성 가상 실험실</h1>
+    </header>
+
+    <section>
+        <h2><i class="fa-solid fa-lightbulb"></i> 1단계: 탐구 문제 확인</h2>
+        <div class="card-box">
+            "빛의 세기, 이산화탄소 농도, 온도가 광합성량에 어떤 영향을 줄까요?"
+        </div>
+    </section>
+
+    <section>
+        <h2><i class="fa-solid fa-list-check"></i> 2단계: 실험 주제 선택</h2>
+        <div class="radio-container">
+            <label class="radio-label active" id="lbl-light">
+                <input type="radio" name="independent" value="light" checked onchange="handleInquiryChange()">
+                💡 빛의 세기 변화 실험
+            </label>
+            <label class="radio-label" id="lbl-co2">
+                <input type="radio" name="independent" value="co2" onchange="handleInquiryChange()">
+                🧪 이산화탄소 농도 변화 실험
+            </label>
+            <label class="radio-label" id="lbl-temp">
+                <input type="radio" name="independent" value="temp" onchange="changeToTempMode()">
+                🌡️ 온도 변화 실험
+            </label>
+        </div>
+    </section>
+
+    <section>
+        <h2><i class="fa-solid fa-vial-circle-check"></i> 3단계: 탐구 변인 확인</h2>
+        <div class="v-grid">
+            <div class="v-card"><strong>조작(독립)변인</strong><span id="disp-indep">빛의 세기</span></div>
+            <div class="v-card"><strong>통제변인</strong><span id="disp-ctrl">이산화탄소, 온도</span></div>
+            <div class="v-card"><strong>측정(종속)변인</strong><span>기포 발생 수</span></div>
+        </div>
+    </section>
+
+    <section>
+        <h2><i class="fa-solid fa-flask-vial"></i> 4단계: 가상 실험 수행</h2>
+        <div class="control-panel">
+            <div class="slider-row">
+                <label>빛의 세기: <b id="txt-light">50</b> lux</label>
+                <input type="range" id="rng-light" min="0" max="100" step="10" value="50" oninput="liveUpdate()">
+            </div>
+            <div class="slider-row">
+                <label>이산화탄소 농도: <b id="txt-co2">0.1</b> %</label>
+                <input type="range" id="rng-co2" min="0" max="0.5" step="0.05" value="0.1" oninput="liveUpdate()">
+            </div>
+            <div class="slider-row">
+                <label>실험 온도: <b id="txt-temp">20</b> °C</label>
+                <input type="range" id="rng-temp" min="0" max="50" step="5" value="20" oninput="liveUpdate()">
+            </div>
+
+            <div id="violation-warn" class="warning-text">⚠️ 대조 실험을 위해 조작 변인 외의 조건은 초기값으로 유지해 주세요!</div>
+            <div id="result-preview">현재 조건 예상 결과: <span id="bubble-val">0</span> 🫧</div>
+
+            <button class="btn btn-record" onclick="recordData()"><i class="fa-solid fa-plus"></i> 실험 결과 기록하기</button>
+        </div>
+    </section>
+
+    <section>
+        <h2><i class="fa-solid fa-table-list"></i> 5단계: 실험 데이터 표</h2>
+        <div class="table-area">
+            <table>
+                <thead><tr id="table-head-row"><th>빛의 세기(lux)</th><th>광합성량(🫧/분)</th></tr></thead>
+                <tbody id="table-body-log"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <h2><i class="fa-solid fa-chart-area"></i> 6단계: 탐구 그래프 생성</h2>
+        <button class="btn btn-graph" onclick="generateGraph()"><i class="fa-solid fa-wand-magic-sparkles"></i> 그래프 그리기</button>
+        <div style="background: white; border-radius: 30px; padding: 25px; margin-top: 20px; border: 1px solid #e2e8f0;">
+            <canvas id="experimentChart"></canvas>
+        </div>
+    </section>
+
+    <section>
+        <h2><i class="fa-solid fa-feather-pointed"></i> 7단계: 탐구 결론 도출</h2>
+        <div class="quiz-zone">
+            <div class="quiz-sentence">
+                실험 결과, <b id="q-variable" style="color:var(--blue)">빛의 세기</b>이(가) 증가함에 따라<br>
+                광합성량은 초기에는 점차 
+                <select id="q-ans-1">
+                    <option value="">-- 선택 --</option>
+                    <option value="up">증가하다가</option>
+                    <option value="flat">일정하다가</option>
+                    <option value="down">감소하다가</option>
+                </select><br>
+                일정 수준을 지나면 
+                <select id="q-ans-2">
+                    <option value="">-- 선택 --</option>
+                    <option value="up">더 많이 증가한다.</option>
+                    <option value="flat">일정해진다.</option>
+                    <option value="down">급격히 감소한다.</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-grade" onclick="gradeCheck()"><i class="fa-solid fa-check-double"></i> 채점 및 정답 확인</button>
+        <button class="btn btn-retry" onclick="resetAll()"><i class="fa-solid fa-rotate-left"></i> 처음부터 다시하기</button>
+        <div id="grade-feedback" class="feedback-msg"></div>
+    </section>
+</div>
+
+<script>
+    let dataLog = [];
+    let chartInstance = null;
+
+    // 온도를 선택했을 때 명시적으로 라디오 버튼 디자인 변경 연동을 위한 함수
+    function changeToTempMode() {
+        document.getElementById('lbl-light').classList.remove('active');
+        document.getElementById('lbl-co2').classList.remove('active');
+        document.getElementById('lbl-temp').classList.add('active');
+        handleInquiryChange();
+    }
+
+    // 2단계 주제 변경 시 모든 연동 및 초기화 로직 수행
+    function handleInquiryChange() {
+        dataLog = [];
+        updateDataTable();
+        if(chartInstance) {
+            chartInstance.destroy();
+            chartInstance = null;
+        }
+
+        const radios = document.getElementsByName('independent');
+        let selectedValue = "light";
+        
+        radios.forEach(r => {
+            const lbl = document.getElementById('lbl-' + r.value);
+            if(r.checked) {
+                lbl.classList.add('active');
+                selectedValue = r.value;
+            } else {
+                lbl.classList.remove('active');
+            }
+        });
+
+        document.getElementById('rng-light').value = 50;
+        document.getElementById('rng-co2').value = 0.1;
+        document.getElementById('rng-temp').value = 20;
+
+        let indepName = "", ctrlName = "", headerName = "";
+        if(selectedValue === 'light') {
+            indepName = "빛의 세기"; headerName = "빛의 세기(lux)"; ctrlName = "CO₂ 농도, 온도";
+        } else if(selectedValue === 'co2') {
+            indepName = "이산화탄소 농도"; headerName = "CO₂ 농도(%)"; ctrlName = "빛의 세기, 온도";
+        } else {
+            indepName = "온도"; headerName = "온도(°C)"; ctrlName = "빛의 세기, CO₂ 농도";
+        }
+
+        document.getElementById('disp-indep').innerText = indepName;
+        document.getElementById('disp-ctrl').innerText = ctrlName;
+        document.getElementById('q-variable').innerText = indepName;
+        document.getElementById('table-head-row').innerHTML = `<th>${headerName}</th><th>광합성량(🫧/분)</th>`;
+
+        document.getElementById('q-ans-1').value = "";
+        document.getElementById('q-ans-2').value = "";
+        document.getElementById('grade-feedback').style.display = "none";
+
+        liveUpdate();
+    }
+
+    function calculate() {
+        const sel = document.querySelector('input[name="independent"]:checked').value;
+        const L = parseFloat(document.getElementById('rng-light').value);
+        const C = parseFloat(document.getElementById('rng-co2').value);
+        const T = parseFloat(document.getElementById('rng-temp').value);
+        
+        let rate = 0;
+        if(sel === 'light') rate = L >= 80 ? 33 : Math.round(40 * (L / (L + 16)));
+        else if(sel === 'co2') rate = C >= 0.25 ? 40 : Math.round(43 * (C / (C + 0.02)));
+        else {
+            if(T <= 35) rate = Math.round(5 + (T * 0.9));
+            else rate = Math.round(Math.max(0, 36 - ((T - 35) * 3)));
+        }
+
+        let isV = false;
+        if(sel === 'light' && (C !== 0.1 || T !== 20)) isV = true;
+        if(sel === 'co2' && (L !== 50 || T !== 20)) isV = true;
+        if(sel === 'temp' && (L !== 50 || C !== 0.1)) isV = true;
+
+        document.getElementById('violation-warn').style.display = isV ? 'block' : 'none';
+        return isV ? Math.round(rate * 0.3) : rate;
+    }
+
+    function liveUpdate() {
+        document.getElementById('txt-light').innerText = document.getElementById('rng-light').value;
+        document.getElementById('txt-co2').innerText = document.getElementById('rng-co2').value;
+        document.getElementById('txt-temp').innerText = document.getElementById('rng-temp').value;
+        document.getElementById('bubble-val').innerText = calculate();
+    }
+
+    function recordData() {
+        const sel = document.querySelector('input[name="independent"]:checked').value;
+        let x = 0;
+        if(sel === 'light') x = document.getElementById('rng-light').value;
+        else if(sel === 'co2') x = document.getElementById('rng-co2').value;
+        else x = document.getElementById('rng-temp').value;
+
+        const y = calculate();
+        dataLog = dataLog.filter(d => d.x !== x);
+        dataLog.push({ x: parseFloat(x), y: y });
+        dataLog.sort((a, b) => a.x - b.x);
+        updateDataTable();
+    }
+
+    function updateDataTable() {
+        const body = document.getElementById('table-body-log');
+        body.innerHTML = '';
+        dataLog.forEach(d => { body.innerHTML += `<tr><td>${d.x}</td><td>${d.y} 🫧</td></tr>`; });
+    }
+
+    function generateGraph() {
+        if(dataLog.length < 2) { alert("데이터를 2개 이상 기록하세요!"); return; }
+        const sel = document.querySelector('input[name="independent"]:checked').value;
+        let xLabel = sel === 'light' ? "빛의 세기 (lux)" : (sel === 'co2' ? "이산화탄소 농도 (%)" : "온도 (°C)");
+        
+        const ctx = document.getElementById('experimentChart').getContext('2d');
+        if(chartInstance) chartInstance.destroy();
+
+        chartInstance = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dataLog.map(d => d.x),
+                datasets: [{
+                    label: '광합성량(기포 수)',
+                    data: dataLog.map(d => d.y),
+                    borderColor: '#4caf50',
+                    backgroundColor: 'rgba(220, 253, 139, 0.3)',
+                    borderWidth: 5, pointRadius: 8, fill: true, tension: 0.3
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: { title: { display: true, text: xLabel, font: { weight: 'bold', size: 14 } } },
+                    y: { min: 0, max: 50, title: { display: true, text: '기포 발생 수 (🫧)', font: { weight: 'bold', size: 14 } } }
+                }
+            }
+        });
+    }
+
+    function gradeCheck() {
+        const sel = document.querySelector('input[name="independent"]:checked').value;
+        const p1 = document.getElementById('q-ans-1').value;
+        const p2 = document.getElementById('q-ans-2').value;
+        const fb = document.getElementById('grade-feedback');
+        if(!p1 || !p2) { alert("모든 항목을 선택해 주세요!"); return; }
+
+        let isCorrect = sel === 'temp' ? (p1 === 'up' && p2 === 'down') : (p1 === 'up' && p2 === 'flat');
+        fb.style.display = "block";
+        fb.className = `feedback-msg ${isCorrect ? 'success' : 'error'}`;
+        fb.innerHTML = isCorrect ? `<h3>🎉 정답입니다!</h3>과학적 원리를 완벽하게 도출했습니다.` : `<h3>😥 다시 한 번 확인해 볼까요?</h3>현상의 순서가 올바른지 그래프를 관찰해 보세요.`;
+        fb.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function resetAll() {
+        if(confirm("모든 데이터를 초기화하고 처음부터 다시 시작할까요?")) {
+            handleInquiryChange();
+        }
+    }
+
+    // 문서 로딩이 완료된 시점에 변인 안내 영역을 최초 1회 동기화하기 위해 직접 실행
+    handleInquiryChange();
+</script>
+</body>
+</html>
