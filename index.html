@@ -120,7 +120,7 @@
     <section>
         <h2><i class="fa-solid fa-lightbulb"></i> 1단계: 탐구 문제 확인</h2>
         <div class="card-box">
-            "빛의 세기, 이산화탄소 농도, 온도가 광합성량에 어떤 영향을 줄까요?"
+            "빛의 세기, 이산화 탄소 농도, 온도가 광합성량에 어떤 영향을 줄까요?"
         </div>
     </section>
 
@@ -133,7 +133,7 @@
             </label>
             <label class="radio-label" id="lbl-co2">
                 <input type="radio" name="independent" value="co2" onchange="handleInquiryChange()">
-                🧪 이산화탄소 농도 변화 실험
+                🧪 이산화 탄소 농도 변화 실험
             </label>
             <label class="radio-label" id="lbl-temp">
                 <input type="radio" name="independent" value="temp" onchange="changeToTempMode()">
@@ -146,7 +146,7 @@
         <h2><i class="fa-solid fa-vial-circle-check"></i> 3단계: 탐구 변인 확인</h2>
         <div class="v-grid">
             <div class="v-card"><strong>조작(독립)변인</strong><span id="disp-indep">빛의 세기</span></div>
-            <div class="v-card"><strong>통제변인</strong><span id="disp-ctrl">이산화탄소, 온도</span></div>
+            <div class="v-card"><strong>통제변인</strong><span id="disp-ctrl">이산화 탄소, 온도</span></div>
             <div class="v-card"><strong>측정(종속)변인</strong><span>기포 발생 수</span></div>
         </div>
     </section>
@@ -159,7 +159,7 @@
                 <input type="range" id="rng-light" min="0" max="100" step="10" value="50" oninput="liveUpdate()">
             </div>
             <div class="slider-row">
-                <label>이산화탄소 농도: <b id="txt-co2">0.1</b> %</label>
+                <label>이산화 탄소 농도: <b id="txt-co2">0.1</b> %</label>
                 <input type="range" id="rng-co2" min="0" max="0.5" step="0.05" value="0.1" oninput="liveUpdate()">
             </div>
             <div class="slider-row">
@@ -261,7 +261,7 @@
         if(selectedValue === 'light') {
             indepName = "빛의 세기"; headerName = "빛의 세기(lux)"; ctrlName = "CO₂ 농도, 온도";
         } else if(selectedValue === 'co2') {
-            indepName = "이산화탄소 농도"; headerName = "CO₂ 농도(%)"; ctrlName = "빛의 세기, 온도";
+            indepName = "이산화 탄소 농도"; headerName = "CO₂ 농도(%)"; ctrlName = "빛의 세기, 온도";
         } else {
             indepName = "온도"; headerName = "온도(°C)"; ctrlName = "빛의 세기, CO₂ 농도";
         }
@@ -331,7 +331,7 @@
     function generateGraph() {
         if(dataLog.length < 2) { alert("데이터를 2개 이상 기록하세요!"); return; }
         const sel = document.querySelector('input[name="independent"]:checked').value;
-        let xLabel = sel === 'light' ? "빛의 세기 (lux)" : (sel === 'co2' ? "이산화탄소 농도 (%)" : "온도 (°C)");
+        let xLabel = sel === 'light' ? "빛의 세기 (lux)" : (sel === 'co2' ? "이산화 탄소 농도 (%)" : "온도 (°C)");
         
         const ctx = document.getElementById('experimentChart').getContext('2d');
         if(chartInstance) chartInstance.destroy();
